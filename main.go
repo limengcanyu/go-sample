@@ -1,6 +1,6 @@
 package main
 
-import "go-sample/mylib"
+import "go-sample/pulsar"
 
 func main() {
 	// 空(nil)切片
@@ -21,12 +21,17 @@ func main() {
 
 	// 错误处理
 	//mylib.ErrorMain()
+	//
+	//mylib.GoroutineMain()
+	//
+	//mylib.ChannelMain()
+	//
+	//mylib.ChannelBufferMain()
+	//
+	//mylib.ChannelRangeMain()
 
-	mylib.GoroutineMain()
+	pulsar.Producer()
 
-	mylib.ChannelMain()
+	pulsar.Consumer()
 
-	mylib.ChannelBufferMain()
-
-	mylib.ChannelRangeMain()
 }
