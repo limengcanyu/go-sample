@@ -10,6 +10,7 @@ import (
 )
 
 func Producer() {
+	// client
 	client, err := pulsar.NewClient(pulsar.ClientOptions{
 		URL:               "pulsar://192.168.203.132:6650",
 		OperationTimeout:  30 * time.Second,
@@ -19,6 +20,9 @@ func Producer() {
 		log.Fatalf("Could not instantiate Pulsar client: %v", err)
 	}
 
+	defer client.Close()
+
+	// producer
 	producer, err := client.CreateProducer(pulsar.ProducerOptions{
 		Topic: "my-topic",
 	})
@@ -34,5 +38,4 @@ func Producer() {
 	}
 	fmt.Println("Published message")
 
-	defer client.Close()
 }

@@ -32,6 +32,9 @@ func main() {
 
 	pulsar.Producer()
 
-	pulsar.Consumer()
+	//pulsar.Consumer()
+
+	// 使用监听器消费消息
+	pulsar.ConsumerListener()
 
 }

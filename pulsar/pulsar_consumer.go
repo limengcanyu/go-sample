@@ -10,6 +10,7 @@ import (
 )
 
 func Consumer() {
+	// client
 	client, err := pulsar.NewClient(pulsar.ClientOptions{
 		URL:               "pulsar://192.168.203.132:6650",
 		OperationTimeout:  30 * time.Second,
@@ -19,6 +20,9 @@ func Consumer() {
 		log.Fatalf("Could not instantiate Pulsar client: %v", err)
 	}
 
+	defer client.Close()
+
+	// consumer
 	consumer, err := client.Subscribe(pulsar.ConsumerOptions{
 		Topic:            "my-topic",
 		SubscriptionName: "my-subscription",
@@ -27,6 +31,7 @@ func Consumer() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
 	defer consumer.Close()
 
 	for i := 0; i < 10; i++ {
@@ -45,5 +50,4 @@ func Consumer() {
 		log.Fatal(err)
 	}
 
-	defer client.Close()
 }
