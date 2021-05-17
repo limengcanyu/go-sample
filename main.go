@@ -1,6 +1,8 @@
 package main
 
-import "go-sample/mylib"
+import (
+	"go-sample/mylib"
+)
 
 func main() {
 	// 空(nil)切片
@@ -42,14 +44,15 @@ func main() {
 	// 方式1
 	//go mylib.ChanSample()
 
-	//// 方式2
-	//// 构建通道
-	//ch := make(chan int)
-	//go mylib.Send(ch)
-	//go mylib.Receive(ch)
-	//
-	//// 当前线程休眠5秒
-	//time.Sleep(500000)
+	// 方式2
+	naturals := make(chan int)
+	squares := make(chan int)
+	go mylib.Counter(naturals)
+	go mylib.Squarer(squares, naturals)
+	mylib.Printer(squares)
 
-	mylib.Defer()
+	// 当前线程休眠
+	//time.Sleep(time.Second * 5)
+
+	//mylib.Defer()
 }

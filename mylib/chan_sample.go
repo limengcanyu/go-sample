@@ -25,32 +25,22 @@ func ChanSample() {
 	fmt.Println("all done")
 }
 
-func Send(ch chan int) {
-	fmt.Println("start send goroutine")
-
-	// 向通道发送值
-	//ch <- 1
-
-	// 循环发送值
-	for i := 0; i < 5; i++ {
-		ch <- i
+func Counter(out chan<- int) {
+	for x := 0; x < 10; x++ {
+		out <- x
 	}
-
-	fmt.Println("exit send goroutine")
+	close(out)
 }
 
-func Receive(ch chan int) {
-	fmt.Println("start receive goroutine")
-
-	// 从通道接收值
-	//value := <-ch
-	//fmt.Printf("receive int value: %d\n", value)
-
-	// 循环接收值
-	for true {
-		value := <-ch
-		fmt.Printf("receive int value: %d\n", value)
+func Squarer(out chan<- int, in <-chan int) {
+	for v := range in {
+		out <- v * v
 	}
+	close(out)
+}
 
-	fmt.Println("exit receive goroutine")
+func Printer(in <-chan int) {
+	for v := range in {
+		fmt.Println(v)
+	}
 }
