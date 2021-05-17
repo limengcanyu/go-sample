@@ -1,6 +1,9 @@
 package main
 
-import "go-sample/pulsar"
+import (
+	"go-sample/mylib"
+	"time"
+)
 
 func main() {
 	// 空(nil)切片
@@ -30,11 +33,24 @@ func main() {
 	//
 	//mylib.ChannelRangeMain()
 
-	pulsar.Producer()
+	// pulsar =============================================
+	//pulsar.Producer()
 
 	//pulsar.Consumer()
 
 	// 使用监听器消费消息
-	pulsar.ConsumerListener()
+	//pulsar.ConsumerListener()
 
+	// chan =============================================
+	// 方式1
+	//go mylib.ChanSample()
+
+	// 方式2
+	// 构建通道
+	ch := make(chan int)
+	go mylib.Send(ch)
+	go mylib.Receive(ch)
+
+	// 当前线程休眠5秒
+	time.Sleep(50000)
 }

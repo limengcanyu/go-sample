@@ -53,6 +53,7 @@ func ChannelMain() {
 	fmt.Println(x, y, x+y)
 }
 
+// ChannelBufferMain
 // 通道缓冲区
 // 通道可以设置缓冲区，通过 make 的第二个参数指定缓冲区大小： ch := make(chan int, 100)
 //
@@ -87,6 +88,7 @@ func fibonacci2(n int, c chan int) {
 	close(c)
 }
 
+// ChannelRangeMain
 // Go 遍历通道与关闭通道
 // Go 通过 range 关键字来实现遍历读取到的数据，类似于与数组或切片。格式：v, ok := <-ch
 // 如果通道接收不到数据后 ok 就为 false，这时通道就可以使用 close() 函数来关闭。
