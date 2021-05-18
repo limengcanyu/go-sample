@@ -1,6 +1,6 @@
 package main
 
-import "go-sample/mylib"
+import "go-sample/redis"
 
 func main() {
 	// 空(nil)切片
@@ -58,9 +58,11 @@ func main() {
 
 	//mylib.Select1()
 
-	c1 := make(chan int)
-	c2 := make(chan int)
-	c3 := make(chan int)
-	c4 := make(chan int)
-	mylib.Select2(c1, c2, c3, c4)
+	//c1 := make(chan int)
+	//c2 := make(chan int)
+	//c3 := make(chan int)
+	//c4 := make(chan int)
+	//mylib.Select2(c1, c2, c3, c4)
+
+	redis.ClientSample()
 }
