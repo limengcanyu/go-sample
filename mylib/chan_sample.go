@@ -8,21 +8,13 @@ func ChanSample() {
 
 	// 开启一个并发匿名函数
 	go func() {
-		fmt.Println("start send goroutine")
-
 		// 向通道发送值
 		ch <- 0
-
-		fmt.Println("exit send goroutine")
 	}()
-
-	fmt.Println("wait receive goroutine")
 
 	// 从通道接收值
 	value := <-ch
 	fmt.Printf("receive int value: %d\n", value)
-
-	fmt.Println("all done")
 }
 
 func Counter(out chan<- int) {
