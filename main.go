@@ -1,6 +1,9 @@
 package main
 
-import "go-sample/redis"
+import (
+	"context"
+	"fmt"
+)
 
 func main() {
 	// 空(nil)切片
@@ -64,5 +67,13 @@ func main() {
 	//c4 := make(chan int)
 	//mylib.Select2(c1, c2, c3, c4)
 
-	redis.ClientSample()
+	//redis.ClientSample()
+
+	// context
+	context2 := context.Background()
+	deadline, ok := context2.Deadline()
+	if ok {
+		panic(ok)
+	}
+	fmt.Printf("time: %s\n", deadline)
 }
