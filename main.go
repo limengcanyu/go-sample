@@ -1,10 +1,5 @@
 package main
 
-import (
-	"context"
-	"fmt"
-)
-
 func main() {
 	// 空(nil)切片
 	//mylib.SliceMain()
@@ -69,11 +64,12 @@ func main() {
 
 	//redis.ClientSample()
 
-	// context
-	context2 := context.Background()
-	deadline, ok := context2.Deadline()
-	if ok {
-		panic(ok)
-	}
-	fmt.Printf("time: %s\n", deadline)
+	//mylib.ContextSample()
+	//mylib.ContextSample2()
+
+	//mylib.PointerSample()
+
+	//mylib.AssignmentsSample()
+
+	//mylib.SwitchSample()
 }
