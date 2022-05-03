@@ -1,6 +1,14 @@
 package main
 
+import (
+	"fmt"
+
+	mylib "limengcanyu.com/example/language"
+)
+
 func main() {
+	fmt.Println("hello, world")
+
 	// 空(nil)切片
 	//mylib.SliceMain()
 
@@ -71,5 +79,5 @@ func main() {
 
 	//mylib.AssignmentsSample()
 
-	//mylib.SwitchSample()
+	mylib.SwitchSample()
 }
